@@ -7,7 +7,7 @@
     - 維基百科 (felixonmars/fcitx5-pinyin-zhwiki)
     - 萌娘百科 (outloudvi/mw2fcitx)
     - Minecraft (改自 Kimiblock/rime-minecraft-dict)
-    - 詩詞 (amzxyz/rime_wanxiang)
+    - 詩詞 (amzxyz/RIME-LMDG)
     - 東方 Project (自製, WIP)
     - 鋼鐵雄心 4 (自製, WIP)
     - Linux (自製, WIP)
