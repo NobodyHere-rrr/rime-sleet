@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d434bd46eba1cda3f7f07dd2de63db27e963f6a7db94140f0d96f6f02be31609
-size 202
+var:
+  last_build_time: 1751680297
+  option:
+    ascii_punct: true
+    emoji: true
+    traditionalization: false
+  previously_selected_schema: rime_sleet
+  schema_access_time:
+    rime_sleet: 1751705240

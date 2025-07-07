@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:66c0907ce3b9a98a94593c01f4b14fddd7306e4b16de584bd1e1db7907ae78d0
-size 559
+# Rime dictionary
+# encoding: utf-8
+# 《空格》
+# for bopomo_onionplus_space
+#
+# 該鍵位分出來方便開關。
+#
+# 空格轉寫，使掛載語言能空格後繼續輸入！！！
+# 在注音鍵位下掛載其他方案，增加該空白碼，選字後上屏雖還是會露出空白，但可少按一鍵。
+#
+# 『洋蔥』製作
+#
+---
+name: space
+version: "202301"
+sort: original
+use_preset_vocabulary: false
+...
+##### 以下一個為空格轉寫，使掛載語言能空格後繼續輸入！！！ #####
+ 	|
+##### 測試調用 #####
+# 	X
+# 	@
+# 	kong5
+
