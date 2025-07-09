@@ -30,4 +30,4 @@
 ## 注意事項
 
 - 英漢反査註釋較長, 可能會導致輸入灋崩潰. 配置文件內有解決方案.
-- 拼音反査需自行根據 mirtlecn/rime-radical-pinyin#反查带声调注音 下載安裝, 否則可能出現問題.
+- 拼音反査需自行根據 mirtlecn/rime-radical-pinyin#反查带声调注音 下載安裝.
