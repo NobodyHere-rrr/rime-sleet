@@ -19,7 +19,7 @@
 - 新增挂接方案
   - cangjie5 (反査) (按 uu 調出) (oniondelta/Onion_Rime_Files) (字庫來源于 Fitzgerald-Porthmouth-Koenigsegg/Cangjie5_Integration)
   - easy_en (按 i 調出) (BlindingDark/rime-easy-en) (詞庫及英漢反査來源于 oniondelta/Onion_Rime_Files)
-  - rime-kagiroi (按 I 調出) (rimeinn/rime-kagiroi)
+  - japanese (按 I 調出) (gkovacs/rime-japanese)
 - 修改 custom_phrase (妨礙鍵位修改)
 
 ## 後續計劃

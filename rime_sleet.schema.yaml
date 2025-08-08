@@ -15,7 +15,7 @@ schema:
   dependencies:
     - radical_pinyin # 拆字反査
     - cangjie5 # 倉頡反査
-    #    - kagiroi # 日本語
+    - japanese # 日本語
     - easy_en # English
     - eng_chi # 英漢反査
 
@@ -62,7 +62,7 @@ engine:
     - abc_segmentor
     - affix_segmentor@radical_lookup # 部件拆字自定义 tag
     - affix_segmentor@cangjie_lookup # 倉頡 tag
-    - affix_segmentor@japan
+    - affix_segmentor@japanese
     - affix_segmentor@easy_en
     - punct_segmentor
     - fallback_segmentor
@@ -73,7 +73,7 @@ engine:
     - lua_translator@*lunar # 农历
     - table_translator@custom_phrase # 自定义短语 custom_phrase.txt
     - table_translator@easy_en
-    #    - script_translator@japan
+    - script_translator@japanese
     - table_translator@radical_lookup # 部件拆字反查
     - table_translator@cangjie_lookup # 倉頡反査
     - table_translator@easy_en
@@ -364,25 +364,26 @@ pinyin_reverse_lookup:
 
 # 其它語言
 # 日本語
-#japan:
-#  tag: japan
-#  dictionary: japanese
-#  # enable_charset_filter: false
-#  enable_completion: true
-#  enable_user_dict: true
-#  prefix: "I"
-#  suffix: "'"
-#  tips: "《日本語》▶"
-#  closing_tips: "◀《日本語》"
-#  preedit_format:
-#    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
-#    - xform/^/《日本語》▶ /
-#    - 'xform/\\/ /'
+japanese:
+  tag: japanese
+  dictionary: japanese
+  # enable_charset_filter: false
+  enable_completion: true
+  enable_sentence: true
+  enable_user_dict: true
+  prefix: "I"
+  suffix: "'"
+  tips: "《日本語》▶"
+  closing_tips: "◀《日本語》"
+  preedit_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+    - xform/^/《日本語》▶ /
+    - 'xform/\\/ /'
 # 英語
 easy_en:
   tag: easy_en
   dictionary: easy_en_lower #easy_en_super
-  enable_sentence: true
+  enable_sentence: false
   enable_completion: true
   # sentence_over_completion: false
   enable_user_dict: false
@@ -432,14 +433,21 @@ recognizer:
     number: "^R[0-9]+[.]?[0-9]*" # 脚本将自动获取第 2 个字符 R 作为触发前缀，响应 lua_translator@*number_translator，数字金额大写
     calculator: "^cC.+" # 响应 lua_translator@*calc_translator，计算器。前缀设定项 calculator/prefix
     gregorian_to_lunar: "^N[0-9]{1,8}" # 脚本将自动获取第 2 个字符 N 作为触发前缀，响应 lua_translator@*lunar，公历转农历，输入 N20240115 得到「二〇二三年腊月初五」
-    #    japan: "^I[a-z,./;-]*'?$"
+    japanese: "^I[a-z,./;-]*'?$"
     easy_en: "^i[a-z,./;'-]*$"
 
 # 从 default 继承快捷键
 key_binder:
   import_preset: default # 从 default.yaml 继承通用的
   search: "`" # 辅码引导符，要添加到 speller/alphabet
-  # bindings:             # 也可以再增加方案专有的快捷键
+  bindings: # 也可以再增加方案专有的快捷键
+    - { when: composing, accept: "Control+t", set_option: traditionalization }
+    - {
+        when: composing,
+        accept: "Control+Shift+t",
+        set_option: traditionalization_2,
+      }
+    - { when: composing, accept: "Control+p", set_option: ascii_punct }
 
 # 拼写设定
 speller:
