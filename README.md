@@ -19,6 +19,7 @@
 - 新增挂接方案
   - cangjie5 (反査) (按 uu 調出) (oniondelta/Onion_Rime_Files) (字庫來源于 Fitzgerald-Porthmouth-Koenigsegg/Cangjie5_Integration)
   - easy_en (按 i 調出) (BlindingDark/rime-easy-en) (詞庫及英漢反査來源于 oniondelta/Onion_Rime_Files)
+  - jaroomaji.kana (按 I 調出) (lazyfoxchan/rime-jaroomaji)
 - 修改 custom_phrase (妨礙鍵位修改)
 
 ## 後續計劃
@@ -30,4 +31,4 @@
 
 - 英漢反査註釋較長, 可能會導致輸入灋崩潰. 配置文件內有解決方案.
 - 拼音反査需自行根據 mirtlecn/rime-radical-pinyin#反查带声调注音 下載安裝.
-- 本方案使用的 "繁軆中文" 不符合任何地區的規範.
+- 本方案默認使用的 "繁軆中文" 不符合任何地區的規範, 但也提供臺灣正軆和日本新字軆的轉換.
