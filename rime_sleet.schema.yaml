@@ -17,6 +17,7 @@ schema:
     - cangjie5 # 倉頡反査
     - easy_en # English
     - eng_chi # 英漢反査
+    - jaroomaji.kana # 仮名
 
 # 开关
 # reset: 默认状态。注释掉后，切换窗口时不会重置到默认状态。
@@ -28,15 +29,24 @@ switches:
   - name: ascii_punct # 中英标点
     states: [¥, $]
     reset: 1
-  - name: traditionalization
+  - name: traditionalization_mine
     states: [简, 繁]
     reset: 1
-  - name: traditionalization_2
+  - name: traditionalization_mine_2
     states: [简, 䋣]
+    reset: 0
+  - name: traditionalization_tw
+    states: [简, 臺]
+    reset: 0
+  - name: traditionalization_jp
+    states: [简, 日]
     reset: 0
   - name: emoji
     states: [💀, 😄]
     reset: 1
+  #  - name: kaomoji
+  #    states: [(X_X), (・∀・)ノ]
+  #    reset: 1
   - name: full_shape
     states: [半角, 全角]
   - name: search_single_char # search.lua 的功能开关，辅码查词时是否单字优先
@@ -61,7 +71,8 @@ engine:
     - abc_segmentor
     - affix_segmentor@radical_lookup # 部件拆字自定义 tag
     - affix_segmentor@cangjie_lookup # 倉頡 tag
-    - affix_segmentor@easy_en
+    - affix_segmentor@easy_en # 中英詞典 tag
+    - affix_segmentor@jaroomaji.kana # 仮名 tag
     - punct_segmentor
     - fallback_segmentor
   translators:
@@ -70,10 +81,10 @@ engine:
     - lua_translator@*date_translator # 时间、日期、星期
     - lua_translator@*lunar # 农历
     - table_translator@custom_phrase # 自定义短语 custom_phrase.txt
-    - table_translator@easy_en
+    - table_translator@easy_en # 英文
+    - table_translator@jaroomaji.kana # 仮名
     - table_translator@radical_lookup # 部件拆字反查
     - table_translator@cangjie_lookup # 倉頡反査
-    - table_translator@easy_en
     - lua_translator@*unicode # Unicode
     - lua_translator@*number_translator # 数字、金额大写
     - lua_translator@*calc_translator # 计算器
@@ -84,9 +95,12 @@ engine:
     - reverse_lookup_filter@eng_chi_reverse_lookup # 英漢反査滤镜
     - lua_filter@*pin_cand_filter # 置顶候选项（顺序要求：置顶候选项 > Emoji > 简繁切换）
     - lua_filter@*long_word_filter # 长词优先（顺序要求：长词优先 > Emoji）
-    - simplifier@emoji # Emoji
-    - simplifier@traditionalize_2 # 简䋣切换
-    - simplifier@traditionalize # 简繁切换
+    - simplifier@emoji # 絵文字
+    # - simplifier@kaomoji # 顏文字
+    - simplifier@traditionalize_mine_2 # 简䋣切换
+    - simplifier@traditionalize_mine # 简繁切换
+    - simplifier@traditionalize_tw # 简臺切换
+    - simplifier@traditionalize_jp # 简日切换
     - lua_filter@*search@radical_pinyin # 部件拆字辅码
     - uniquifier # 去重
 
@@ -289,22 +303,38 @@ custom_phrase:
   enable_sentence: false # 禁止造句
   initial_quality: 99 # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
 
-# Emoji
+# 絵文字
 emoji:
   option_name: emoji # 对应 switches 中的 name
   opencc_config: emoji.json # 选择要加载的 OpenCC 配置
   inherit_comment: false # 在 corrector.lua 及反查中，emoji 的 comment 显示为空
-  tags: [abc] # 限制在对应 tag，不对其他如反查的内容做简繁转换
+  tags: [abc] # 限制在对应 tag
+# 顏文字
+# kaomoji:
+#   option_name: kaomoji # 对应 switches 中的 name
+#   opencc_config: kaomoji.json # 选择要加载的 OpenCC 配置
+#   inherit_comment: false
+#   tags: [abc] # 限制在对应 tag
 
 # 简繁切换
-traditionalize:
-  option_name: traditionalization # 对应 switches 中的 name
+traditionalize_mine:
+  option_name: traditionalization_mine # 对应 switches 中的 name
   opencc_config: S2SMTGTCL.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
   tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
   tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
-traditionalize_2:
-  option_name: traditionalization_2 # 对应 switches 中的 name
+traditionalize_mine_2:
+  option_name: traditionalization_mine_2 # 对应 switches 中的 name
   opencc_config: S2SMTGTC.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
+  tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
+  tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
+traditionalize_tw:
+  option_name: traditionalization_tw # 对应 switches 中的 name
+  opencc_config: s2tw.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
+  tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
+  tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
+traditionalize_jp:
+  option_name: traditionalization_jp # 对应 switches 中的 name
+  opencc_config: s2jp.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
   tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
   tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
 
@@ -385,6 +415,27 @@ easy_en:
   #   # - xform|[~a-z;/.'-]+||
   #   - xform/@@/\n          /
   #   - xform/@/ /
+# 仮名
+jaroomaji.kana:
+  tag: jaroomaji.kana
+  dictionary: jaroomaji.kana
+  enable_sentence: true
+  enable_completion: false
+  enable_user_dict: false
+  prefix: "I"
+  tips: "《仮名》▶"
+  closing_tips: "◀《仮名》"
+  preedit_format:
+    - xform/^/《仮名》▶ /
+    # - xform/》;/》; /
+    # - xform|》[/]|》/ |
+    # - xform|》'|》' |
+    - 'xform/\\/ /'
+  comment_format:
+    - xform/.+// #刪除尚未輸入完整碼之提示 ~abc
+  #   # - xform|[~a-z;/.'-]+||
+  #   - xform/@@/\n          /
+  #   - xform/@/ /
 
 eng_chi_reverse_lookup:
   tags: [easy_en]
@@ -415,6 +466,7 @@ recognizer:
     calculator: "^cC.+" # 响应 lua_translator@*calc_translator，计算器。前缀设定项 calculator/prefix
     gregorian_to_lunar: "^N[0-9]{1,8}" # 脚本将自动获取第 2 个字符 N 作为触发前缀，响应 lua_translator@*lunar，公历转农历，输入 N20240115 得到「二〇二三年腊月初五」
     easy_en: "^i[a-z,./;'-]*$"
+    jaroomaji.kana: "^I[a-zA-Z,./;'-]*$"
 
 # 从 default 继承快捷键
 key_binder:
