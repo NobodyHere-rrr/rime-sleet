@@ -6,10 +6,10 @@ name: rime_sleet
 version: "rolling"
 import_tables:
   - cn_dicts/8105       # 字表
-  - cn_dicts/chars      # 擴充字表
+  - cn_dicts/zi         # 擴充字表
   - cn_dicts/base       # 基礎詞庫
   - cn_dicts/ext        # 擴㞡詞庫
-  - cn_dicts/compatible # 多音詞庫
+  - cn_dicts/duoyin     # 多音詞庫
   - cn_dicts/custom     # 自定義詞庫
   - cn_dicts/touhou     # 東方詞庫 (未完工)
 # - cn_dicts/hoi4       # 鋼鐵雄心詞庫 (未動工)
@@ -18,7 +18,8 @@ import_tables:
   - cn_dicts/zhwiki     # 維基百科詞庫
   - cn_dicts/moegirl    # 萌百詞庫
   - cn_dicts/minecraft  # Minecraft 詞庫
-  - cn_dicts/poetry     # 詩詞詞庫
+  - cn_dicts/shici      # 詩詞詞庫
+  - cn_dicts/diming     # 地名詞庫
   - cn_dicts/others     # 雜項詞庫
 
   # 建议把扩展词库放到下面，有重复词条时，最上面的权重生效

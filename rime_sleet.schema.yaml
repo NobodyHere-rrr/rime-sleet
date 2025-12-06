@@ -25,22 +25,13 @@ schema:
 # abbrev: 默认的缩写取 states 的第一个字符，abbrev 可自定义一个字符
 switches:
   - name: ascii_mode
-    states: [中, Ａ]
-  - name: ascii_punct # 中英标点
+    states: [漢, Ａ]
+  - name: ascii_punct
     states: [¥, $]
     reset: 1
-  - name: traditionalization_mine
-    states: [简, 繁]
+  - options: [s2s, s2t, s2t_2, s2tw, s2jp]
+    states: [简, 繁, 䋣, 臺, 日]
     reset: 1
-  - name: traditionalization_mine_2
-    states: [简, 䋣]
-    reset: 0
-  - name: traditionalization_tw
-    states: [简, 臺]
-    reset: 0
-  - name: traditionalization_jp
-    states: [简, 日]
-    reset: 0
   - name: emoji
     states: [💀, 😄]
     reset: 1
@@ -97,10 +88,10 @@ engine:
     - lua_filter@*long_word_filter # 长词优先（顺序要求：长词优先 > Emoji）
     - simplifier@emoji # 絵文字
     # - simplifier@kaomoji # 顏文字
-    - simplifier@traditionalize_mine_2 # 简䋣切换
-    - simplifier@traditionalize_mine # 简繁切换
-    - simplifier@traditionalize_tw # 简臺切换
-    - simplifier@traditionalize_jp # 简日切换
+    - simplifier@s2t # 繁
+    - simplifier@s2t_2 # 䋣
+    - simplifier@s2tw # 臺
+    - simplifier@s2jp # 日
     - lua_filter@*search@radical_pinyin # 部件拆字辅码
     - uniquifier # 去重
 
@@ -263,16 +254,14 @@ pin_cand_filter:
   - sma	什么啊
 
 # 語灋模型
-octagram:
-  __patch:
-    grammar:
-      language: wanxiang-lts-zh-hans
-      collocation_max_length: 8 #命中的最长词组
-      collocation_min_length: 3 #命中的最短词组，搭配词频健全的词库时候应当最小值设为3避开2字高频词
-      collocation_penalty: -10 #默认-12 对常见搭配词组施加的惩罚值。较高的负值会降低这些搭配被选中的概率，防止过于频繁地出现某些固定搭配。
-      non_collocation_penalty: -12 #默认-12 对非搭配词组施加的惩罚值。较高的负值会降低非搭配词组被选中的概率，避免不合逻辑或不常见的词组组合。
-      weak_collocation_penalty: -24 #默认-24 对弱搭配词组施加的惩罚值。保持默认值通常是为了有效过滤掉不太常见但仍然合理的词组组合。
-      rear_penalty: -30 #默认-18 对词组中后续词语的位置施加的惩罚值。较高的负值会降低某些词语在句子后部出现的概率，防止句子结构不自然。
+grammar:
+  language: wanxiang-lts-zh-hans
+  collocation_max_length: 8 #命中的最长词组
+  collocation_min_length: 3 #命中的最短词组，搭配词频健全的词库时候应当最小值设为3避开2字高频词
+  collocation_penalty: -15 #默认-12 对常见搭配词组施加的惩罚值。较高的负值会降低这些搭配被选中的概率，防止过于频繁地出现某些固定搭配。
+  non_collocation_penalty: -17 #默认-12 对非搭配词组施加的惩罚值。较高的负值会降低非搭配词组被选中的概率，避免不合逻辑或不常见的词组组合。
+  weak_collocation_penalty: -24 #默认-24 对弱搭配词组施加的惩罚值。保持默认值通常是为了有效过滤掉不太常见但仍然合理的词组组合。
+  rear_penalty: -18 #默认-18 对词组中后续词语的位置施加的惩罚值。较高的负值会降低某些词语在句子后部出现的概率，防止句子结构不自然。
 
 # 主翻译器，拼音
 translator:
@@ -283,7 +272,7 @@ translator:
   enable_word_completion: true # 大于 4 音节的词条自动补全，librime > 1.11.2
   spelling_hints: 8 # corrector.lua ：为了让错音错字提示的 Lua 同时适配全拼双拼，将拼音显示在 comment 中
   always_show_comments: true # corrector.lua ：Rime 默认在 preedit 等于 comment 时取消显示 comment，这里强制一直显示，供 corrector.lua 做判断用。
-  initial_quality: 1.2 # 拼音的权重应该比英文大
+  initial_quality: 1.2
   comment_format: # 标记拼音注释，供 corrector.lua 做判断用
     - xform/^/［/
     - xform/$/］/
@@ -301,7 +290,7 @@ custom_phrase:
   db_class: stabledb # 只读数据库，无法动态调频；设为 tabledb 可以动态调频
   enable_completion: false # 补全提示
   enable_sentence: false # 禁止造句
-  initial_quality: 99 # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
+  initial_quality: 99 # custom_phrase 的权重应该比
 
 # 絵文字
 emoji:
@@ -317,23 +306,23 @@ emoji:
 #   tags: [abc] # 限制在对应 tag
 
 # 简繁切换
-traditionalize_mine:
-  option_name: traditionalization_mine # 对应 switches 中的 name
+s2t:
+  option_name: s2t # 对应 switches 中的 name
   opencc_config: S2SMTGTCL.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
   tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
   tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
-traditionalize_mine_2:
-  option_name: traditionalization_mine_2 # 对应 switches 中的 name
+s2t_2:
+  option_name: s2t_2 # 对应 switches 中的 name
   opencc_config: S2SMTGTC.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
   tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
   tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
-traditionalize_tw:
-  option_name: traditionalization_tw # 对应 switches 中的 name
+s2tw:
+  option_name: s2tw # 对应 switches 中的 name
   opencc_config: s2tw.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
   tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
   tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
-traditionalize_jp:
-  option_name: traditionalization_jp # 对应 switches 中的 name
+s2jp:
+  option_name: s2jp # 对应 switches 中的 name
   opencc_config: s2jp.json # s2t.json | s2hk.json | s2tw.json | s2twp.json （Rime 内置配置，在程序目录可找到）
   tips: none # 转换提示: all 都显示 | char 仅单字显示 | none 不显示。
   tags: [abc, number, gregorian_to_lunar] # 限制在对应 tag，不对其他如反查的内容做简繁转换
