@@ -8,7 +8,7 @@
 
 ---
 name: custom
-version: "0.1"
+version: "rolling"
 sort: by_weight
 ...
 
@@ -38,3 +38,4 @@ sort: by_weight
 擸㩑	la sa	100
 你按	ni an	75
 在麼	zai me	100
+玉兔毫	yu tu hao	100

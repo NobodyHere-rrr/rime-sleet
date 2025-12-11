@@ -1,11 +1,13 @@
 # Rime dictionary
 # encoding: utf-8
 #
-# Created by MessTG2333
+# 為便利 Linux 用戶交流而作.
+#
+# Created by MessTG2333.
 #
 
 ---
 name: linux
-version: "0.1"
+version: "rolling"
 sort: by_weight
 ...
