@@ -10,8 +10,9 @@
   - 萌娘百科 (outloudvi/mw2fcitx)
   - Minecraft (改自 Kimiblock/rime-minecraft-dict)
   - 詩詞 (amzxyz/RIME-LMDG)
+  - 自定義詞庫
   - 東方 Project (自製, WIP)
-  - 鋼鐵雄心 4 (自製, WIP)
+  - Paradox (自製, WIP)
   - Linux (自製, WIP)
 - 使用 萬象語灋模型 (amzxyz/RIME-LMDG)
 - 移除挂接方案
