@@ -1,1 +1,2 @@
 wanxiang-lts-zh-hans.gram filter=lfs diff=lfs merge=lfs -text
+cn_dicts/zhwiki.dict.yaml filter=lfs diff=lfs merge=lfs -text
