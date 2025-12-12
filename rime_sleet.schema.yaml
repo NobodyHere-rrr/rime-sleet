@@ -29,7 +29,7 @@ switches:
   - name: ascii_punct
     states: [¥, $]
     reset: 1
-  - options: [s2s, s2t, s2t_2, s2tw, s2jp]
+  - options: [s, s2t, s2t_2, s2tw, s2jp]
     states: [简, 繁, 䋣, 臺, 日]
     reset: 1
   - name: emoji
