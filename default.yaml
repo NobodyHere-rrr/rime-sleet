@@ -7,7 +7,8 @@ config_version: "2024-02-05"
 # 方案列表
 schema_list:
   # 可以直接删除或注释不需要的方案，对应的 *.schema.yaml 方案文件也可以直接删除
-  - schema: rime_sleet # 凍雨拼音（全拼）
+  - schema: rime_sleet # 凍雨拼音
+  - schema: rime_sleet_flypy # 凍雨拼音·小鶴雙拼
 
 # 菜单
 menu:

@@ -4,12 +4,12 @@
 
 ## 與霚凇拼音的不同
 
-- 僅保留 26 鍵全拼方案
+- 僅保留 26 鍵全拼與小鶴雙拼方案
 - 新增詞庫
   - 維基百科 (felixonmars/fcitx5-pinyin-zhwiki)
   - 萌娘百科 (outloudvi/mw2fcitx)
   - Minecraft (改自 Kimiblock/rime-minecraft-dict)
-  - 詩詞 (amzxyz/RIME-LMDG)
+  - 詩詞 (amzxyz/rime_wanxiang)
   - 自定義詞庫
   - 東方 Project (自製, WIP)
   - Paradox (自製, WIP)
@@ -18,9 +18,9 @@
 - 移除挂接方案
   - melt_eng (中英混輸方案, 妨礙鍵位修改與個人潔癖)
 - 新增挂接方案
-  - cangjie5 (反査) (按 uu 調出) (oniondelta/Onion_Rime_Files) (字庫來源于 Fitzgerald-Porthmouth-Koenigsegg/Cangjie5_Integration)
-  - easy_en (按 i 調出) (BlindingDark/rime-easy-en) (詞庫及英漢反査來源于 oniondelta/Onion_Rime_Files)
-  - jaroomaji.kana (按 I 調出) (lazyfoxchan/rime-jaroomaji)
+  - cangjie5 (反査) (oniondelta/Onion_Rime_Files) (字庫來源于 Fitzgerald-Porthmouth-Koenigsegg/Cangjie5_Integration)
+  - easy_en (BlindingDark/rime-easy-en) (詞庫及英漢反査來源于 oniondelta/Onion_Rime_Files)
+  - jaroomaji.kana (lazyfoxchan/rime-jaroomaji)
 - 修改 custom_phrase (妨礙鍵位修改)
 
 ## 後續計劃
@@ -32,5 +32,4 @@
 ## 注意事項
 
 - 英漢反査註釋較長, 可能會導致輸入灋崩潰. 配置文件內有解決方案.
-- 拼音反査需自行根據 mirtlecn/rime-radical-pinyin#反查带声调注音 下載安裝.
 - 本方案默認使用的 "繁軆中文" 不符合任何地區的規範, 但也提供臺灣正軆和日本新字軆的轉換.
