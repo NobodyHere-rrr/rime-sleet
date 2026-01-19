@@ -6,7 +6,7 @@ name: rime_sleet
 version: "rolling"
 import_tables:
   - cn_dicts/8105       # 字表
-  - cn_dicts/zi         # 擴充字表
+  - cn_dicts/41448      # 擴充字表
   - cn_dicts/base       # 基礎詞庫
   - cn_dicts/ext        # 擴㞡詞庫
   - cn_dicts/duoyin     # 多音詞庫
