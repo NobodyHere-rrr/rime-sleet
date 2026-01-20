@@ -7,7 +7,7 @@
 - 僅保留 26 鍵全拼與小鶴雙拼方案
 - 新增詞庫
   - 維基百科 (felixonmars/fcitx5-pinyin-zhwiki)
-  - 萌娘百科 (outloudvi/mw2fcitx)
+  - 萌娘百科 (suiginko/moetype)
   - Minecraft (改自 Kimiblock/rime-minecraft-dict)
   - 詩詞 (amzxyz/rime_wanxiang)
   - 自定義詞庫
