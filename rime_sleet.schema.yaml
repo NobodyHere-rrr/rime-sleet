@@ -268,7 +268,7 @@ language: zh-hans-t-huayu-v7-bgw
 # 主翻译器，拼音
 translator:
   dictionary: rime_sleet
-  contextual_suggestions: true
+  contextual_suggestions: false
   max_homophones: 7
   max_homographs: 7
   enable_user_dict: false # 是否开启自动调频
