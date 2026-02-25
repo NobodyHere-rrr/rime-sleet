@@ -11,7 +11,6 @@ name: custom
 version: "rolling"
 sort: by_weight
 ...
-
 凍雨拼音	dong yu pin yin	100
 含部分	han bu fen	100
 更常用	geng chang yong	100
@@ -25,7 +24,6 @@ sort: by_weight
 疑似有点	yi si you dian	100
 唾弃憎恶	tuo qi zeng wu	100
 深居內陆	shen ju nei lu	100
-迫真	po zhen	100
 大嘘	da xu	100
 望周知	wang zhou zhi	100
 完卖	wan mai	100
@@ -37,5 +35,9 @@ sort: by_weight
 镆䥺剑	mo ye jian	100
 擸㩑	la sa	100
 你按	ni an	75
-在麼	zai me	100
+在么	zai me	100
 玉兔毫	yu tu hao	100
+澈底	che di	50000
+倒楣	dao mei	20000
+大澈大悟	da che da wu	1000
+是的	shi de	1000
