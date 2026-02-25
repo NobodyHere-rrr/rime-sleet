@@ -12,10 +12,16 @@ sort: by_weight
 谁都不会服谁	shéi dōu bú huì fú shéi	1
 调来调去	tiáo lái tiáo qù	33
 不会服谁	bú huì fú shéi	29
+天雨	tiān yù	431
+临了	lín liǎo	411
+临了了	lín liǎo le	143
 空着	kòng zhe	549
 大夫们	dà fū men	194
+你行	nǐ háng	207
+我行	wǒ háng	350
 咱家	zá jiā	207
 咱家的	zá jiā de	118
+成角	chéng jué	375
 打的	dǎ de	600
 实在	shí zai	814
 长有	zhǎng yǒu	510
@@ -50,6 +56,12 @@ sort: by_weight
 大汗	dà hán	481
 指甲	zhī jia	369
 好色	hǎo sè	551
+一本	yī běn	866
+一线	yí xiàn	644
+一级	yī jí	702
+一级伤残	yī jí shāng cán	32
+普通话一级	pǔ tōng huà yī jí	1
+一级字表	yī jí zì biǎo	32
 降了吧	xiáng le ba	175
 降了没	xiáng le méi	194
 对不了	duì bu liǎo	223
@@ -70,6 +82,11 @@ sort: by_weight
 长虫	zhǎng chóng	377
 落子	lào zǐ	480
 卡住	kǎ zhù	442
+本事	běn shi	668
+还上了	huán shàng le	440
+她穿着	tā chuān zhuó	394
+他穿着	tā chuān zhuó	416
+一定还	yí dìng huán	531
 将进酒	jiāng jìn jiǔ	169
 调了吧	tiáo le ba	170
 他调了	tā tiáo le	190
@@ -456,6 +473,7 @@ sort: by_weight
 年长	nián cháng	450
 年长	nián zhǎng	520
 便宜	pián yi	560
+大都	dà dū		350
 数次	shù cì	770
 数次	shuò cì	520
 随行	suí háng	550
@@ -481,6 +499,7 @@ sort: by_weight
 越长	yuè zhǎng	350
 炸鱼	zhá yú	540
 炸鱼	zhà yú	30
+喜乐	xǐ yuè	360
 长的	zhǎng de	920
 长牙	zhǎng yá	580
 长牙	cháng yá	380
