@@ -1,0 +1,12 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# 數學詞庫.
+#
+# Created by MessTG2333.
+#
+
+---
+name: mathmatics
+version: "rolling"
+sort: by_weight

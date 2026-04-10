@@ -1,0 +1,12 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# 經濟學詞庫.
+#
+# Created by MessTG2333.
+#
+
+---
+name: economics
+version: "rolling"
+sort: by_weight
