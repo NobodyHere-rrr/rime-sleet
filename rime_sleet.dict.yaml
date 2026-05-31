@@ -15,7 +15,7 @@ import_tables:
   - cn_dicts/touhou        # 東方詞庫 (未完工)
 # - cn_dicts/paradox       # Paradox 詞庫 (未動工)
   - cn_dicts/zhwiki        # 維基百科詞庫
-  - cn_dicts/zhwikisource  # 維基文庫詞庫
+# - cn_dicts/zhwikisource  # 維基文庫詞庫
   - cn_dicts/zhwiktionary  # 維基詞典詞庫
   - cn_dicts/moe           # 萌娘百科詞庫
   - cn_dicts/minecraft     # Minecraft 詞庫
